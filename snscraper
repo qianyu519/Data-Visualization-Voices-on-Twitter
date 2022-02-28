@@ -1,0 +1,13 @@
+import pandas as pd
+import snscrape.modules.twitter as sntwitter
+
+# defining search terms and building Twitter query
+query = '#COVID OR #covid OR covid'
+search = query + ' lang:en ' + 'since:2021-01-01 ' + 'until:2021-01-02'
+
+# scraper object with query
+scraped_tweets = sntwitter.TwitterSearchScraper(search).get_items()
+
+# convert object to dataframe and save to csv file
+df = pd.DataFrame(scraped_tweets)
+df.to_csv('covidSample.csv')
