@@ -1,0 +1,19 @@
+[
+ { // day1
+ 	topics : [
+ 		{ // topic1
+ 			topic_name: "vaccine",
+ 			number_tweets: 100,
+ 			example_tweets:[
+				{content:"tweet1", sentiment:'neg:, neu:...'}, 
+				{content:"tweet2", sentiment:'neg:, neu:...'},
+			],
+ 			sentiment_distribution: [0.1, 0,3, 0.4],
+ 		},
+ 		{} //topic2
+ 		...
+ 	]
+ }, 
+ {} //day2
+ ...
+]

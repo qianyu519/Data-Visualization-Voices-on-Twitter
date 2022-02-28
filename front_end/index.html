@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>Classification Example</title>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script src="https://unpkg.com/simple-statistics@7.7.0/dist/simple-statistics.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js" data-dojo-config="async: true"></script>
+	<script src="require.js"></script>
+	<script src="main_view.js"></script>
+	<script src="topic_view.js"></script>
+	<script src="detail_view.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<style>
+		div.container {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			margin-left: 10px;
+			padding: 10px 10px 10px 10px;
+			background-color: white;
+		}
+
+		.selected {
+			stroke: yellow;
+			stroke-width: 5px;
+		}
+
+		.shallow {
+			stroke-opacity: 50%;
+		}
+		.text {
+			font-family: sans-serif;
+			font-size: 20px;
+			font-style:italic;
+			border: 2px solid Gainsboro;
+			border-radius: 5px;
+		}
+		.interval{
+			height: 30px;
+		}
+		.title {
+			font-family: sans-serif;
+			font-size: 20px;
+			font-weight:    bold;
+		}
+	</style>
+</head>
+<body>
+
+<!--
+This span is used to show the title of this webpage.
+-->
+<img src="twitter-1.png", alt="Icon" width="100">
+<span id="details" style="font-weight: bold">Voices on Twitter</span>
+
+<!--
+This is the container in which D3 will draw the scatter plot.
+-->
+<div id="vis_container" style="width:100%;">
+</div>
+
+<!--
+Finally, here comes the Javascript code.
+-->
+<script>
+	// var mydata = JSON.parse(data);
+	fetch("https://opal.ils.unc.edu/~mtguo/inls641_hw/agg.json")
+			.then(res => res.json())
+			.then((out) => {
+					// Initialize the visualization
+					let main_view = new Main_view("vis_container");
+					main_view.init(out);
+			}).catch(err => console.error(err));
+	// d3.json("https://opal.ils.unc.edu/~mtguo/inls641_hw/agg.json", function(data) {
+	// 	console.log(data);
+
+	// });
+
+</script>
+</body>
+</html>
